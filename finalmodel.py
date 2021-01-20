@@ -3,6 +3,7 @@ from tensorflow import keras
 from keras.layers import Dense, Flatten, Permute
 from keras import Sequential
 import keras.backend as kb
+kb.set_image_data_format('channels_first')
 import resnet
 from util import (
     get_place_to_index_mapping,
