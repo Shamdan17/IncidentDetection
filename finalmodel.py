@@ -37,10 +37,10 @@ class FinalModel(keras.Model):
         return mdl
 
  
-    def call(self, inputs):
+    def call(self, inputs, training=True):
         x = self.permute(inputs)
-        x = self.cropped(x)
+        x = self.cropped(x, training=training)
         x = self.permuteback(x)
-        x = self.trunk_model(x)
+        x = self.trunk_model(x, training=training)
         
-        return self.incident_proj(x), self.places_proj(x)
+        return self.incident_proj(x, training=training), self.places_proj(x, training=training)
